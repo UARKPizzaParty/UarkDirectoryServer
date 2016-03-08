@@ -31,7 +31,7 @@ public class Person extends BaseModel
 	}
 
 	@Basic
-	@Column(name = "USERNAME", nullable = false, length = 50)
+	@Column(name = "USERNAME", nullable = false, length = 20)
 	public String getUsername()
 	{
 		return username;
@@ -63,16 +63,5 @@ public class Person extends BaseModel
 	public void setPersonAppXrfSet(Set<PersonAppXrf> personAppXrfSet)
 	{
 		this.personAppXrfSet = personAppXrfSet;
-	}
-
-	@Override
-	public String toString()
-	{
-		return "Person{" +
-				"id=" + getId() +
-				", username='" + getUsername() + '\'' +
-				", createDate=" + getCreateDate() +
-				", personAppXrfSet=" + getPersonAppXrfSet() +
-				'}';
 	}
 }

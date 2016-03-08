@@ -14,6 +14,9 @@ public class App extends BaseModel
 {
 	private Integer id;
 	private String title;
+	private String publisher;
+	private Float version;
+	private String description;
 	private Date createDate;
 	private Set<PersonAppXrf> personAppXrfSet = new HashSet<>();
 
@@ -31,7 +34,7 @@ public class App extends BaseModel
 	}
 
 	@Basic
-	@Column(name = "TITLE", nullable = false, length = 50)
+	@Column(name = "TITLE", nullable = false, length = 20)
 	public String getTitle()
 	{
 		return title;
@@ -40,6 +43,42 @@ public class App extends BaseModel
 	public void setTitle(String title)
 	{
 		this.title = title;
+	}
+
+	@Basic
+	@Column(name = "PUBLISHER", nullable = true, length = 20)
+	public String getPublisher()
+	{
+		return publisher;
+	}
+
+	public void setPublisher(String publisher)
+	{
+		this.publisher = publisher;
+	}
+
+	@Basic
+	@Column(name = "VERSION", nullable = false)
+	public Float getVersion()
+	{
+		return version;
+	}
+
+	public void setVersion(Float version)
+	{
+		this.version = version;
+	}
+
+	@Basic
+	@Column(name = "DESCRIPTION", nullable = true, length = 200)
+	public String getDescription()
+	{
+		return description;
+	}
+
+	public void setDescription(String description)
+	{
+		this.description = description;
 	}
 
 	@Basic
@@ -64,15 +103,5 @@ public class App extends BaseModel
 	{
 		this.personAppXrfSet = personAppXrfSet;
 		return this;
-	}
-
-	@Override
-	public String toString()
-	{
-		return "App{" +
-				"id=" + getId() +
-				", title='" + getTitle() + '\'' +
-				", createDate=" + getCreateDate() +
-				'}';
 	}
 }

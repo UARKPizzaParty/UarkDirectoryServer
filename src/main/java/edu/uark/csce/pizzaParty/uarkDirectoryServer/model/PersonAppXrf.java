@@ -70,15 +70,4 @@ public class PersonAppXrf extends BaseModel
 	{
 		this.isOwner = isOwner;
 	}
-
-	@Override
-	public String toString()
-	{
-		return "PersonAppXrf{" +
-				"id=" + getId() +
-				", person=" + getPerson() +
-				", app=" + getApp() +
-				", isOwner=" + getIsOwner() +
-				'}';
-	}
 }

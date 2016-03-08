@@ -44,10 +44,7 @@ public class AppRepository extends BaseRepository
 	@Produces(MediaType.APPLICATION_JSON)
 	public App getApp(@PathParam("title") String title) throws NamingException
 	{
-		startTransaction();
-		App app = (App) getOne("title", title, "selectApp");
-		commitTransaction();
-		return app;
+		return (App) getOne("title", title, "selectApp");
 	}
 
 	@GET
@@ -55,10 +52,7 @@ public class AppRepository extends BaseRepository
 	@Produces(MediaType.APPLICATION_JSON)
 	public List getAllAppsForUser(@PathParam("username") String username) throws NamingException
 	{
-		startTransaction();
-		List list = getList("username", username, "getAllApps");
-		commitTransaction();
-		return list;
+		return getList("username", username, "getAllApps");
 	}
 
 	@GET
@@ -66,10 +60,7 @@ public class AppRepository extends BaseRepository
 	@Produces(MediaType.APPLICATION_JSON)
 	public List getAppsOwnedByUser(@PathParam("username") String username) throws NamingException
 	{
-		startTransaction();
-		List list = getList("username", username, "getOwnerApps");
-		commitTransaction();
-		return list;
+		return getList("username", username, "getOwnerApps");
 	}
 
 	@GET
