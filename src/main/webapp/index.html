@@ -2,9 +2,130 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Pizza Party</title>
+  <title>Upload New Application</title>
 </head>
 <body>
-  Pizza Party
+  <p>Use this form to upload a new application to the UARK Directory</p>
+  <form action="submit" method="POST" enctype="multipart/form-data">
+    <table>
+      <tr>
+        <td>
+          <label>Application Name</label>
+        </td>
+        <td>
+          <label>
+            <input type="text" name="appName"/>
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>Application Description</label>
+        </td>
+        <td>
+          <label>
+            <input type="text" name="appDesc"/>
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>Application Version</label>
+        </td>
+        <td>
+          <label>
+            <input type="text" name="appVersion"/>
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>Developer</label>
+        </td>
+        <td>
+          <label>
+            <input type="text" name="developer"/>
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>Thumbnail Image (png)</label>
+        </td>
+        <td>
+          <label>
+            <input type="file" name="thumb"/>
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>Screenshot 1 (png)</label>
+        </td>
+        <td>
+          <label>
+            <input type="file" name="image1"/>
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>Screenshot 2 (png)</label>
+        </td>
+        <td>
+          <label>
+            <input type="file" name="image2"/>
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>Screenshot 3 (png)</label>
+        </td>
+        <td>
+          <label>
+            <input type="file" name="image3"/>
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>Screenshot 4 (png)</label>
+        </td>
+        <td>
+          <label>
+            <input type="file" name="image4"/>
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>Screenshot 5 (png)</label>
+        </td>
+        <td>
+          <label>
+            <input type="file" name="image5"/>
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>APK File</label>
+        </td>
+        <td>
+          <label>
+            <input type="file" name="apk"/>
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>
+            <input id="submit" type="submit" value="Submit">
+          </label>
+        </td>
+      </tr>
+    </table>
+  </form>
 </body>
 </html>
