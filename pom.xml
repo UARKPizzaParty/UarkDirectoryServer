@@ -48,7 +48,8 @@
 		<dependency>
 			<groupId>org.apache.tomcat</groupId>
 			<artifactId>tomcat-catalina</artifactId>
-			<version>8.0.32</version>
+			<version>7.0.52</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>mysql</groupId>
@@ -60,6 +61,16 @@
 			<artifactId>jcabi-ssh</artifactId>
 			<version>1.5.2</version>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.5.2</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.6.2</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -68,6 +79,9 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
 				<version>2.6</version>
+				<configuration>
+					<warName>UarkDirectory</warName>
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -83,10 +97,8 @@
 				<artifactId>openjpa-maven-plugin</artifactId>
 				<version>2.3.0</version>
 				<configuration>
-					<includes>edu.uark.csce.pizzaParty.uarkDirectoryServer.model.BaseModel</includes>
-					<includes>edu.uark.csce.pizzaParty.uarkDirectoryServer.model.App</includes>
-					<includes>edu.uark.csce.pizzaParty.uarkDirectoryServer.model.Person</includes>
-					<includes>edu.uark.csce.pizzaParty.uarkDirectoryServer.model.PersonAppXrf</includes>
+
+					<includes>edu.uark.csce.pizzaParty.uarkDirectoryServer.App</includes>
 					<addDefaultConstructor>true</addDefaultConstructor>
 					<enforcePropertyRestrictions>true</enforcePropertyRestrictions>
 				</configuration>
