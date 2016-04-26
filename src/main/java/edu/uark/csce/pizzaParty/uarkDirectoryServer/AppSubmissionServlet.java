@@ -23,6 +23,7 @@ import java.util.Map;
 public class AppSubmissionServlet extends HttpServlet
 {
 	private final static String[] PARAM_VALUES = {"appName", "appDesc", "appVersion", "developer", "thumb", "image1", "image2", "image3", "image4", "image5", "apk"};
+	private final static String FILE_NAME = "filename=\"";
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
@@ -96,7 +97,9 @@ public class AppSubmissionServlet extends HttpServlet
 					}
 					else
 					{
-						String apkName = paramMap.get("appName") + ".apk";
+						String header = part.getHeader("content-disposition");
+						String apkName = header.substring(header.indexOf(FILE_NAME) + FILE_NAME.length()).replace("\"", "");
+						paramMap.put("apkName", apkName);
 						InputStream apkStream = part.getInputStream();
 						File apk = new File("/var/www/html/" + apkName);
 						FileOutputStream apkOutputStream = new FileOutputStream(apk);
@@ -118,7 +121,7 @@ public class AppSubmissionServlet extends HttpServlet
 					break;
 			}
 		}
-		if (sendRequest(paramMap.get("appName"), paramMap.get("appDesc"), paramMap.get("appVersion"), paramMap.get("developer"), numImages))
+		if (sendRequest(paramMap.get("appName"), paramMap.get("appDesc"), paramMap.get("appVersion"), paramMap.get("developer"), numImages, paramMap.get("apkName")))
 		{
 			response.sendRedirect("submit.html");
 		}
@@ -133,11 +136,11 @@ public class AppSubmissionServlet extends HttpServlet
 	{
 		InputStream inputStream = imagePart.getInputStream();
 		BufferedImage bufferedImage = ImageIO.read(inputStream);
-		FileOutputStream fos = new FileOutputStream(new File("/var/www/html/" + imageName + "png"));
+		FileOutputStream fos = new FileOutputStream(new File("/var/www/html/" + imageName + ".png"));
 		ImageIO.write(bufferedImage, "png", fos);
 	}
 
-	private boolean sendRequest(String appName, String appDesc, String appVersion, String developer, int numImages)
+	private boolean sendRequest(String appName, String appDesc, String appVersion, String developer, int numImages, String apkName)
 	{
 		try
 		{
@@ -148,13 +151,14 @@ public class AppSubmissionServlet extends HttpServlet
 			app.setDeveloper(developer);
 			app.setCreateDate(new Date(System.currentTimeMillis()));
 			app.setNumImages(numImages);
-
+			app.setApkName(apkName);
 			AppRepository appRepository = new AppRepository();
 			appRepository.postApp(app);
 			return true;
 		}
 		catch (Exception e)
 		{
+			e.printStackTrace();
 			return false;
 		}
 	}

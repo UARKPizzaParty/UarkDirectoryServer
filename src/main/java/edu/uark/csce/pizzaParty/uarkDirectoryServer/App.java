@@ -17,6 +17,7 @@ public class App
 	private String description;
 	private Date createDate;
 	private Integer numImages;
+	private String apkName;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -93,13 +94,25 @@ public class App
 
 	@Basic
 	@Column(name = "NUM_IMAGES", nullable = false)
-	public int getNumImages()
+	public Integer getNumImages()
 	{
 		return numImages;
 	}
 
-	public void setNumImages(int numImages)
+	public void setNumImages(Integer numImages)
 	{
 		this.numImages = numImages;
+	}
+
+	@Basic
+	@Column(name = "APK_NAME", nullable = false, length = 200)
+	public String getApkName()
+	{
+		return apkName;
+	}
+
+	public void setApkName(String apkName)
+	{
+		this.apkName = apkName;
 	}
 }
